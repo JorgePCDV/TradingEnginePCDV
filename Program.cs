@@ -1,12 +1,6 @@
 ﻿using System;
 
-namespace TradingEnginePCDV
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World!");
-        }
-    }
-}
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+namespace TradingEngineServer.Core;
