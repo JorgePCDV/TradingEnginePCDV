@@ -3,4 +3,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace TradingEngineServer.Core;
+using TradingEngineServer.Core;
+
+using var engine = TradingEngineServerHostBuilder.BuildTradingEngineServer();
