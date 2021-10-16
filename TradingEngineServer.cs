@@ -24,11 +24,12 @@ namespace TradingEngineServer.Core
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            _logger.LogInformation($"Starting {nameof(TradingEngineServer)}");
             while (!stoppingToken.IsCancellationRequested)
             {
 
             }
-
+            _logger.LogInformation($"Stopping {nameof(TradingEngineServer)}");
             return Task.CompletedTask;
         }
     }
