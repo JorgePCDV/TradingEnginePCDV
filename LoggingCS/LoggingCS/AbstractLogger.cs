@@ -4,8 +4,10 @@ using System.Text;
 
 namespace TradingEngineServer.Logging
 {
-    abstract class AbstractLogger : ILogger
+    public abstract class AbstractLogger : ILogger
     {
+        protected AbstractLogger(){}
+        
         protected abstract void Log(LogLevel logLevel, string module, string message);
 
         public void Debug(string module, string message) => Log(LogLevel.Debug, module, message);
