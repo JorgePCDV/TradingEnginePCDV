@@ -10,14 +10,14 @@ namespace TradingEngineServer.Core
 {
     sealed class TradingEngineServer : BackgroundService, ITradingEngineServer
     {
+        private readonly IOptions<TradingEngineServerConfiguration> _engineConfiguration;
         private readonly ILogger<TradingEngineServer> _logger;
-        private readonly TradingEngineServerConfiguration _tradingEngineServerConfig;
 
-        public TradingEngineServer(ILogger<TradingEngineServer> logger, 
-                                   IOptions<TradingEngineServerConfiguration> config)
+        public TradingEngineServer(IOptions<TradingEngineServerConfiguration> engineConfiguration,
+                                   ILogger<TradingEngineServer> logger)
         {
+            _engineConfiguration = engineConfiguration ?? throw new ArgumentNullException(nameof(engineConfiguration));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _tradingEngineServerConfig = config.Value ?? throw new ArgumentNullException(nameof(config));
         }
 
         public Task Run(CancellationToken token) => ExecuteAsync(token);
