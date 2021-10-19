@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TradingEngineServer.Logging
 {
-    interface ITextLogger
+    public interface ITextLogger : ILogger, IDisposable
     {
     }
 }

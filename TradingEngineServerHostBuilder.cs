@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TradingEngineServer.Core.Configuration;
+using TradingEngineServer.Logging;
 
 namespace TradingEngineServer.Core
 {
@@ -20,6 +21,7 @@ namespace TradingEngineServer.Core
 
                 // Add singleton objects.
                 services.AddSingleton<ITradingEngineServer, TradingEngineServer>();
+                services.AddSingleton<ITextLogger, >();
 
                 // Add hosted service.
                 services.AddHostedService<TradingEngineServer>();

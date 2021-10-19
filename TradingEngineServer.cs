@@ -5,19 +5,20 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using TradingEngineServer.Core.Configuration;
+using TradingEngineServer.Logging;
 
 namespace TradingEngineServer.Core
 {
     sealed class TradingEngineServer : BackgroundService, ITradingEngineServer
     {
         private readonly IOptions<TradingEngineServerConfiguration> _engineConfiguration;
-        private readonly ILogger<TradingEngineServer> _logger;
+        private readonly ITextLogger _textLogger;
 
         public TradingEngineServer(IOptions<TradingEngineServerConfiguration> engineConfiguration,
-                                   ILogger<TradingEngineServer> logger)
+                                   ITextLogger textLogger)
         {
             _engineConfiguration = engineConfiguration ?? throw new ArgumentNullException(nameof(engineConfiguration));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _textLogger = textLogger ?? throw new ArgumentNullException(nameof(textLogger));
         }
 
         public Task Run(CancellationToken token) => ExecuteAsync(token);
