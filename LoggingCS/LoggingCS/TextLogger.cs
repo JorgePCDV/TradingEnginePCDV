@@ -12,10 +12,13 @@ namespace TradingEngineServer.Logging
     {
         private readonly LoggerConfiguration _loggerConfiguration;
         private readonly BufferBlock<LogInformation> _logQueue = new BufferBlock<LogInformation>();
+        private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
 
         public TextLogger(IOptions<LoggerConfiguration> loggerConfiguration) : base()
         {
             _loggerConfiguration = loggerConfiguration.Value ?? throw new ArgumentNullException(nameof(loggerConfiguration));
+            string filepath = String.Empty;
+            _ = Task.Run(() => LogAsync(filepath, _logQueue, _cancellationTokenSource.Token));
         }
 
         private static async Task LogAsync(string filePath, BufferBlock<LogInformation> logQueue, CancellationToken cancellationToken)
