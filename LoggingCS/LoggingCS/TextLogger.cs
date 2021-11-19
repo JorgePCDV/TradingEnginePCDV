@@ -32,14 +32,13 @@ namespace TradingEngineServer.Logging
                     string formattedMessage = FormatLogItem(logItem);
                     await streamWriter.WriteAsync(formattedMessage).ConfigureAwait(false);
                 }
-            } catch(OperationCanceledException) { 
-            
-            }
+            } catch(OperationCanceledException) {}
         }
 
         private static string FormatLogItem(LogInformation logItem)
         {
-            throw new NotImplementedException();
+            return $"[{logItem.Now:yyyy-MM-dd HH-mm-ss.fffffff}] [{logItem.ThreadName,-30}:{logItem.ThreadId:000}]"
+                + $"[{logItem.LogLevel} {logItem.Message}]";
         }
 
         protected override void Log(LogLevel logLevel, string module, string message)
