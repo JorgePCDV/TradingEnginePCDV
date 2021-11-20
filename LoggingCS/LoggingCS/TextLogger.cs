@@ -14,6 +14,7 @@ namespace TradingEngineServer.Logging
         private readonly BufferBlock<LogInformation> _logQueue = new BufferBlock<LogInformation>();
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
         private bool _disposed = false;
+        private readonly object _lock = new object();
 
         public TextLogger(IOptions<LoggerConfiguration> loggerConfiguration) : base()
         {
@@ -62,7 +63,11 @@ namespace TradingEngineServer.Logging
                                 Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.Name));
         }
 
-        
+        // Similar to a destructor
+        ~TextLogger()
+        {
+            Dispose(false);
+        }
 
         public void Dispose()
         {
@@ -72,8 +77,11 @@ namespace TradingEngineServer.Logging
 
         protected virtual void Dispose(bool disposing)
         {
-            if (_disposed) return;
-            _disposed = true;
+            lock(_lock)
+            {
+                if (_disposed) return;
+                _disposed = true;
+            }
 
             if(disposing)
             {
