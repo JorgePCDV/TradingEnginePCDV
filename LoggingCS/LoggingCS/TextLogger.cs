@@ -28,8 +28,10 @@ namespace TradingEngineServer.Logging
             var now = DateTime.Now;
             string logDirectory = Path.Combine(_loggerConfiguration.TextLoggerConfiguration.Directory, 
                 $"{now:yyy-MM-dd}");
-            string baseLogName = Path.Combine(_loggerConfiguration.TextLoggerConfiguration.Filename, 
-                _loggerConfiguration.TextLoggerConfiguration.FileExtension);
+
+            string uniqueLogName = $"{_loggerConfiguration.TextLoggerConfiguration.Filename}-{now:HH_mm_ss}";
+            string baseLogName = Path.Combine(uniqueLogName, _loggerConfiguration.TextLoggerConfiguration.FileExtension);
+            
             string filepath = Path.Combine(logDirectory, baseLogName);
 
             Directory.CreateDirectory(logDirectory);
