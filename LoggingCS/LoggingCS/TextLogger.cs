@@ -31,6 +31,8 @@ namespace TradingEngineServer.Logging
             string baseLogName = Path.Combine(_loggerConfiguration.TextLoggerConfiguration.Filename, 
                 _loggerConfiguration.TextLoggerConfiguration.FileExtension);
             string filepath = Path.Combine(logDirectory, baseLogName);
+
+            Directory.CreateDirectory(logDirectory);
             _ = Task.Run(() => LogAsync(filepath, _logQueue, _cancellationTokenSource.Token));
         }
 
