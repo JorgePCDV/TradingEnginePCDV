@@ -13,6 +13,7 @@ namespace TradingEngineServer.Logging
         private readonly LoggerConfiguration _loggerConfiguration;
         private readonly BufferBlock<LogInformation> _logQueue = new BufferBlock<LogInformation>();
         private readonly CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+        private bool _disposed = false;
 
         public TextLogger(IOptions<LoggerConfiguration> loggerConfiguration) : base()
         {
@@ -61,9 +62,27 @@ namespace TradingEngineServer.Logging
                                 Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.Name));
         }
 
+        
+
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed) return;
+            _disposed = true;
+
+            if(disposing)
+            {
+                // Get rid of managed resources
+                _cancellationTokenSource.Cancel();
+                _cancellationTokenSource.Dispose();
+            }
+
+            // Get rid of unmanaged resources
         }
     }
 }
