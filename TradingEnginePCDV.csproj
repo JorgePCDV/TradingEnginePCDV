@@ -6,6 +6,7 @@
     <LangVersion>9</LangVersion>
     <RootNamespace>TradingEngineServer.Core</RootNamespace>
     <AssemblyName>TradingEngineServer.Core</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>

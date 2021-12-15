@@ -30,7 +30,7 @@ namespace TradingEngineServer.Logging
                 $"{now:yyy-MM-dd}");
 
             string uniqueLogName = $"{_loggerConfiguration.TextLoggerConfiguration.Filename}-{now:HH_mm_ss}";
-            string baseLogName = Path.Combine(uniqueLogName, _loggerConfiguration.TextLoggerConfiguration.FileExtension);
+            string baseLogName = Path.ChangeExtension(uniqueLogName, _loggerConfiguration.TextLoggerConfiguration.FileExtension);
             
             string filepath = Path.Combine(logDirectory, baseLogName);
 
@@ -42,7 +42,7 @@ namespace TradingEngineServer.Logging
         {
             // using disposes of these streams at the end of the scope
             using var fileStream = new FileStream(filePath, FileMode.CreateNew, FileAccess.Write, FileShare.Read);
-            using var streamWriter = new StreamWriter(fileStream);
+            using var streamWriter = new StreamWriter(fileStream) { AutoFlush = true };
 
             try
             {
