@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TradingEnginePCDV", "TradingEnginePCDV.csproj", "{5F03643C-F08F-4698-8C5F-2B7522C26451}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingCS", "LoggingCS\LoggingCS\LoggingCS.csproj", "{C8CC3DBA-6E4A-48C8-949D-3F955C53C9E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingCS", "LoggingCS\LoggingCS\LoggingCS.csproj", "{C8CC3DBA-6E4A-48C8-949D-3F955C53C9E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstrumentCS", "InstrumentCS\InstrumentCS.csproj", "{24132AEB-7105-4FD2-B086-AE163BE75021}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C8CC3DBA-6E4A-48C8-949D-3F955C53C9E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8CC3DBA-6E4A-48C8-949D-3F955C53C9E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8CC3DBA-6E4A-48C8-949D-3F955C53C9E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24132AEB-7105-4FD2-B086-AE163BE75021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24132AEB-7105-4FD2-B086-AE163BE75021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24132AEB-7105-4FD2-B086-AE163BE75021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24132AEB-7105-4FD2-B086-AE163BE75021}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
