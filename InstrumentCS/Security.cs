@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace InstrumentCS
+﻿namespace TradingEngineServer.Instrument
 {
     public class Security
     {
