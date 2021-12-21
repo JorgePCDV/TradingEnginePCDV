@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TradingEngineServer.Orders
 {
-    class CancelOrder : IOrderCore
+    public class CancelOrder : IOrderCore
     {
         public CancelOrder(IOrderCore orderCore)
         {

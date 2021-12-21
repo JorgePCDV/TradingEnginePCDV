@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TradingEngineServer.Orders
 {
-    class ModifyOrder : IOrderCore
+    public class ModifyOrder : IOrderCore
     {
         public ModifyOrder(IOrderCore orderCore, 
                            long modifyPrice,
@@ -33,5 +33,16 @@ namespace TradingEngineServer.Orders
 
         // FIELDS //
         private readonly IOrderCore _orderCore;
+
+        // METHODS
+        public CancelOrder ToCancelOrder()
+        {
+            return new CancelOrder(this);
+        }
+
+        public Order ToNewOrder()
+        {
+            return new Order(this);
+        }
     }
 }
