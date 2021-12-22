@@ -26,6 +26,20 @@ namespace TradingEngineServer.Orders
 
             return orderCount;
         }
+        public uint GetLevelOrderQuantity()
+        {
+            uint orderQuantity = 0;
+            OrderbookEntry headPointer = Head;
+            while (headPointer != null)
+            {
+                
+                orderQuantity += headPointer.CurrentOrder.CurrentQuantity;
+                headPointer = headPointer.Next;
+            }
+
+            return orderQuantity;
+        }
+
         public bool IsEmpty
         {
             get 
