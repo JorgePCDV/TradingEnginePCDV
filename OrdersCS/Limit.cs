@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace TradingEngineServer.Orders
 {
@@ -38,6 +36,28 @@ namespace TradingEngineServer.Orders
             }
 
             return orderQuantity;
+        }
+
+        public List<OrderRecord> GetLevelOrderRecords()
+        {
+            List<OrderRecord> orderRecords = new List<OrderRecord>();
+            OrderbookEntry headPointer = Head;
+            uint theoreticalQueuePosition = 0;
+            while(headPointer != null)
+            {
+                var currentOrder = headPointer.CurrentOrder;
+                if(currentOrder.CurrentQuantity != 0)
+                {
+                    orderRecords.Add(
+                        new OrderRecord(currentOrder.OrderId, currentOrder.CurrentQuantity, Price, 
+                        currentOrder.IsBuySide, currentOrder.Username, currentOrder.SecurityId, theoreticalQueuePosition)
+                    );
+                    theoreticalQueuePosition++;
+                    headPointer = Head.Next;
+                }
+            }
+
+            return orderRecords;
         }
 
         public bool IsEmpty
