@@ -52,9 +52,9 @@ namespace TradingEngineServer.Orders
                         new OrderRecord(currentOrder.OrderId, currentOrder.CurrentQuantity, Price, 
                         currentOrder.IsBuySide, currentOrder.Username, currentOrder.SecurityId, theoreticalQueuePosition)
                     );
-                    theoreticalQueuePosition++;
-                    headPointer = Head.Next;
                 }
+                theoreticalQueuePosition++;
+                headPointer = Head.Next;
             }
 
             return orderRecords;
