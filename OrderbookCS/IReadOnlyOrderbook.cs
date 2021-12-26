@@ -6,5 +6,6 @@ namespace TradingEngineServer.Orderbook
     {
         bool ContainsOrder(long OrderId);
         OrderbookSpread GetSpread();
+        int Count { get; }
     }
 }
