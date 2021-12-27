@@ -57,7 +57,11 @@ namespace TradingEngineServer.Orderbook
 
         public void ChangeOrder(ModifyOrder modifyOrder)
         {
-            throw new NotImplementedException();
+            if(_orders.TryGetValue(modifyOrder.OrderId, out OrderbookEntry orderBookEntry))
+            {
+                RemoveOrder(modifyOrder.ToCancelOrder());
+                AddOrder(modifyOrder.ToNewOrder(), orderBookEntry.ParentLimit, modifyOrder.IsBuySide ? _bidLimits : _askLimits, _orders);
+            }
         }
 
         public bool ContainsOrder(long orderId)
