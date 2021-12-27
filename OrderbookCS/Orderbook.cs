@@ -1,13 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TradingEngineServer.Instrument;
 using TradingEngineServer.Orders;
 
 namespace TradingEngineServer.Orderbook
 {
     public class Orderbook : IRetrievalOrderbook
     {
-        public int Count => throw new NotImplementedException();
+        // PRIVATE FIELDS //
+        private readonly Security _instrument;
+        private readonly Dictionary<long, OrderbookEntry> _orders = new Dictionary<long, OrderbookEntry>();
+        private readonly SortedSet<Limit> _askLimits = new SortedSet<Limit>(AskLimitComparer.Comparer);
+        private readonly SortedSet<Limit> _bidLimits = new SortedSet<Limit>(BidLimitComparer.Comparer);
+
+        public Orderbook(Security instrument)
+        {
+            _instrument = instrument;
+        }
+
+        public int Count => _orders.Count;
 
         public void AddOrder(Order order)
         {
