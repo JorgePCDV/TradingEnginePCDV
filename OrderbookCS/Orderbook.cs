@@ -31,9 +31,9 @@ namespace TradingEngineServer.Orderbook
             throw new NotImplementedException();
         }
 
-        public bool ContainsOrder(long OrderId)
+        public bool ContainsOrder(long orderId)
         {
-            throw new NotImplementedException();
+            return _orders.ContainsKey(orderId);
         }
 
         public List<OrderbookEntry> GetAskOrders()
