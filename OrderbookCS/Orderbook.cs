@@ -29,9 +29,21 @@ namespace TradingEngineServer.Orderbook
 
         private static void AddOrder(Order order, Limit baseLimit, SortedSet<Limit> limitLevels, Dictionary<long, OrderbookEntry> internalBook)
         {
-            if(limitLevels.TryGetValue(baseLimit, out Limit limit))
+            if (limitLevels.TryGetValue(baseLimit, out Limit limit))
             {
-
+                OrderbookEntry orderbookEntry = new OrderbookEntry(order, baseLimit);
+                if(limit.Head == null)
+                {
+                    limit.Head = orderbookEntry;
+                    limit.Tail = orderbookEntry;
+                } else
+                {
+                    OrderbookEntry tailPointer = limit.Tail;
+                    tailPointer.Next = orderbookEntry;
+                    orderbookEntry.Previous = tailPointer;
+                    limit.Tail = orderbookEntry;
+                }
+                internalBook.Add(order.OrderId, orderbookEntry);
             }
             else
             {
