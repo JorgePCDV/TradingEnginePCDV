@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TradingEngineServer.Instrument;
 using TradingEngineServer.Orders;
@@ -127,7 +128,16 @@ namespace TradingEngineServer.Orderbook
 
         public OrderbookSpread GetSpread()
         {
-            throw new NotImplementedException();
+            long? bestBid = null, bestAsk = null;
+            if (_bidLimits.Any() && !_bidLimits.Max.IsEmpty)
+            {
+                bestBid = _bidLimits.Max.Price;
+            }
+            if (_askLimits.Any() && !_askLimits.Min.IsEmpty)
+            {
+                bestAsk = _askLimits.Min.Price;
+            }
+            return new OrderbookSpread(bestBid, bestAsk);
         }
     }
 }
