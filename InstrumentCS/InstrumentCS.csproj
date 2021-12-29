@@ -6,6 +6,7 @@
     <RootNamespace>TradingEngineServer.Instrument</RootNamespace>
     <AssemblyName>TradingEngineServer.Instrument</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
 </Project>

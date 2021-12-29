@@ -6,6 +6,7 @@
     <RootNamespace>TradingEngineServer.Logging</RootNamespace>
     <AssemblyName>TradingEngineServer.Logging</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
   <ItemGroup>

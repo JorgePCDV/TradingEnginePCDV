@@ -6,6 +6,7 @@
     <RootNamespace>TradingEngineServer.Orders</RootNamespace>
     <AssemblyName>TradingEngineServer.Orders</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
 </Project>
