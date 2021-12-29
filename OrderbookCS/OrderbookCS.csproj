@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>    <LangVersion>9</LangVersion>
+    <TargetFramework>net5.0</TargetFramework>    
+    <LangVersion>9</LangVersion>
     <RootNamespace>TradingEngineServer.Orderbook</RootNamespace>
     <AssemblyName>TradingEngineServer.Orderbook</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
