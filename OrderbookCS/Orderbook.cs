@@ -118,7 +118,24 @@ namespace TradingEngineServer.Orderbook
 
         public List<OrderbookEntry> GetAskOrders()
         {
-            throw new NotImplementedException();
+            List<OrderbookEntry> orderBookEntries = new List<OrderbookEntry>();
+            foreach(var askLimit in _askLimits)
+            {
+                if (askLimit.IsEmpty)
+                {
+                    continue;
+                }
+                else
+                {
+                    OrderbookEntry askLimitPointer = askLimit.Head;
+                    while(askLimitPointer != null)
+                    {
+                        orderBookEntries.Add(askLimitPointer);
+                        askLimitPointer = askLimitPointer.Next;
+                    }
+                }
+            }
+            return orderBookEntries;
         }
 
         public List<OrderbookEntry> GetBidOrders()
