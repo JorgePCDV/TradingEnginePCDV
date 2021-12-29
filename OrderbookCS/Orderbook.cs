@@ -140,7 +140,24 @@ namespace TradingEngineServer.Orderbook
 
         public List<OrderbookEntry> GetBidOrders()
         {
-            throw new NotImplementedException();
+            List<OrderbookEntry> orderBookEntries = new List<OrderbookEntry>();
+            foreach (var bidLimit in _bidLimits)
+            {
+                if (bidLimit.IsEmpty)
+                {
+                    continue;
+                }
+                else
+                {
+                    OrderbookEntry bidLimitPointer = bidLimit.Head;
+                    while (bidLimitPointer != null)
+                    {
+                        orderBookEntries.Add(bidLimitPointer);
+                        bidLimitPointer = bidLimitPointer.Next;
+                    }
+                }
+            }
+            return orderBookEntries;
         }
 
         public OrderbookSpread GetSpread()
